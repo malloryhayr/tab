@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
 import { Discord, DiscordTextStyle } from 'presence-kit';
+import { GitHub } from '../components/GitHub';
 import styled from 'styled-components';
 
 const DAYS = [
@@ -77,9 +78,9 @@ export default function Tab() {
 			</Head>
 
 			<TabBackground>
-				<div></div>
+				<GitHub />
 				<BottomContainer>
-					<Discord id={'182292736790102017'} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+					<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
 					<GreetingContainer>
 						<GreetingPrimary>
 							{greeting}, {getName()}.
