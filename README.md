@@ -8,4 +8,4 @@ A New Tab page for productivity
 ### Progress
 - [x] Discord Status card
 - [x] Greeting & time of day
-- [ ] GitHub issues & PRs display #1
+- [ ] GitHub issues & PRs display [#1](https://github.com/iGalaxyYT/tab/pull/1)
