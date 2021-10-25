@@ -925,6 +925,11 @@ convert-source-map@1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+cookie-cutter@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/cookie-cutter/-/cookie-cutter-0.2.0.tgz#5988f598b68c060a00ec8524ad6e6aa193e72244"
+  integrity sha1-WYj1mLaMBgoA7IUkrW5qoZPnIkQ=
+
 core-js-pure@^3.16.0:
   version "3.18.3"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.18.3.tgz#7eed77dcce1445ab68fd68715856633e2fb3b90c"
@@ -1479,6 +1484,11 @@ fastq@^1.6.0:
   integrity sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==
   dependencies:
     reusify "^1.0.4"
+
+feather-icons-react@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/feather-icons-react/-/feather-icons-react-0.5.0.tgz#74f8b398f4031491901aa47ff470899e408df159"
+  integrity sha512-k7y6JnghcwLi3uo5SaSnnngfHOE+IPpAFzlsmNhlXwbP8jev2rOYbEq1g5lhMglbV934KhcaSbo3DYV32I3/Ug==
 
 file-entry-cache@^6.0.1:
   version "6.0.1"

@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
-import { Discord, DiscordTextStyle } from 'presence-kit';
-import { GitHub } from '../components/GitHub';
 import styled from 'styled-components';
+
+import { Discord, DiscordTextStyle } from 'presence-kit';
+
+import Settings from '../components/Settings';
+import GitHub from '../components/GitHub';
 
 const DAYS = [
 	'Sunday',
@@ -78,18 +81,21 @@ export default function Tab() {
 			</Head>
 
 			<TabBackground>
-				<GitHub />
-				<BottomContainer>
-					<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
-					<GreetingContainer>
-						<GreetingPrimary>
-							{greeting}, {getName()}.
-						</GreetingPrimary>
-						<GreetingSecondary>
-							{date} • {time}
-						</GreetingSecondary>
-					</GreetingContainer>
-				</BottomContainer>
+				<Settings />
+				<TabContainer>
+					<GitHub />
+					<BottomContainer>
+						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+						<GreetingContainer>
+							<GreetingPrimary>
+								{greeting}, {getName()}.
+							</GreetingPrimary>
+							<GreetingSecondary>
+								{date} • {time}
+							</GreetingSecondary>
+						</GreetingContainer>
+					</BottomContainer>
+				</TabContainer>
 			</TabBackground>
 		</>
 	)
@@ -100,10 +106,14 @@ const TabBackground = styled.div`
 	padding: 50px;
 	margin: 0;
 	height: 100vh;
+`;
 
+const TabContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	height: calc(90vh - 100px);
 `;
 
 const BottomContainer = styled.div`
