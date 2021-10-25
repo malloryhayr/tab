@@ -71,6 +71,11 @@ export default function Tab() {
 	
 	return (
 		<>
+			<Head>
+				<title>New Tab</title>
+				<link rel='icon' href='/none.ico'/>
+			</Head>
+
 			<TabBackground>
 				<div></div>
 				<BottomContainer>
