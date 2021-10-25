@@ -6,6 +6,6 @@ A New Tab page for productivity
 - `name` - The name to be shown for the greeting.
 
 ### Progress
-[x] Discord Status card
-[x] Greeting & time of day
-[ ] GitHub issues & PRs display
+- [x] Discord Status card
+- [x] Greeting & time of day
+- [ ] GitHub issues & PRs display
