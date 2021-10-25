@@ -8,4 +8,4 @@ A New Tab page for productivity
 ### Progress
 - [x] Discord Status card
 - [x] Greeting & time of day
-- [ ] GitHub issues & PRs display
+- [ ] GitHub issues & PRs display #1
