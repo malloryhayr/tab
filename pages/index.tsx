@@ -72,7 +72,18 @@ export default function Tab() {
 	return (
 		<>
 			<TabBackground>
-				<Discord id={'182292736790102017'} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+				<div></div>
+				<BottomContainer>
+					<Discord id={'182292736790102017'} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+					<GreetingContainer>
+						<GreetingPrimary>
+							{greeting}, {getName()}.
+						</GreetingPrimary>
+						<GreetingSecondary>
+							{date} • {time}
+						</GreetingSecondary>
+					</GreetingContainer>
+				</BottomContainer>
 			</TabBackground>
 		</>
 	)
@@ -80,11 +91,39 @@ export default function Tab() {
 
 const TabBackground = styled.div`
 	background-color: #010409;
-  padding: 50px;
-  margin: 0;
-  height: 100vh;
+	padding: 50px;
+	margin: 0;
+	height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+`;
+
+const BottomContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
+
+const GreetingContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+`;
+
+const GreetingPrimary = styled.h1`
+	margin: 0;
+	font-size: 3.5rem;
+	line-height: 1.15;
+	text-align: right;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+`;
+
+const GreetingSecondary = styled.h2`
+	margin: 0;
+	font-size: 2rem;
+	line-height: 1.5;
+	text-align: right;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `;
