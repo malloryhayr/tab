@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useState, useEffect } from 'react';
 
+import { getCookie, setCookies } from 'cookies-next';
 import styled from 'styled-components';
 
 import { Discord, DiscordTextStyle } from 'presence-kit';
@@ -36,7 +38,17 @@ function getDiscordID(): string | undefined {
 	return localStorage.getItem('igalaxy_newtab_discord_id') as string;
 }
 
-export default function Tab() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const githubToken = getCookie('githubToken', context) as string || '';
+
+	return {
+		props: {
+			githubToken
+		}
+	}
+}
+
+export default function Tab({ githubToken }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const [greeting, setGreeting] = useState(
 		new Date().getHours() >= 12 && new Date().getHours() < 18
 			? 'Good afternoon'
@@ -81,7 +93,7 @@ export default function Tab() {
 			</Head>
 
 			<TabBackground>
-				<Settings />
+				<Settings githubToken={githubToken} />
 				<TabContainer>
 					<GitHub />
 					<BottomContainer>

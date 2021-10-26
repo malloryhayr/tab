@@ -1,23 +1,34 @@
 // @ts-ignore
 import FeatherIcon from 'feather-icons-react';
-//@ts-ignore
-import cookieCutter from 'cookie-cutter';
+import { setCookies } from 'cookies-next';
 
 import { useState } from 'react';
+
 import styled from 'styled-components';
 
-function getGitHubToken(): string | undefined {
-	if (typeof window == 'undefined') return '';
-	return cookieCutter.get('githubToken') || '';
-}
-
-function setGitHubToken(token: string) {
-	if (typeof window == 'undefined') return;
-	cookieCutter.set('githubToken', token, {secure: true, expires: new Date(Date.now() + 2592e6)});
-}
-
-export default function Settings() {
+export default function Settings({ githubToken }: {
+	githubToken: string;
+}) {
 	const [settingsOpen, setSettingsOpen] = useState(false);
+
+	function getGithubDashboard(): boolean {
+		if (typeof window == 'undefined') return false;
+
+		let state = localStorage.getItem('igalaxy_newtab_gh_dashboard') as unknown as boolean || false;
+		if (!state)
+			state = false;
+			setGithubDashboard(false);
+		return state;
+	}
+
+	function setGithubDashboard(state: boolean) {
+		if (typeof window == 'undefined') return;
+		localStorage.setItem('igalaxy_newtab_gh_dashboard', `${state}`);
+	}
+
+	function setGithubToken(token: string) {
+		setCookies('githubToken', token, {maxAge: 2592e3, secure: true, sameSite: 'strict'});
+	}
 
 	return (
 		<>
@@ -35,8 +46,12 @@ export default function Settings() {
 					</SettingsHeader>
 					<h3>GitHub</h3>
 					<SettingsInputRow>
+						<SettingsInputLabel>Enable GitHub Dashboard</SettingsInputLabel>
+						<SettingsCheckboxInput onChange={e => setGithubDashboard(e.target.checked)} />
+					</SettingsInputRow>
+					<SettingsInputRow>
 						<SettingsInputLabel>Personal Access Token</SettingsInputLabel>
-						<SettingsTextInput placeholder={getGitHubToken()} onChange={(e: any) => setGitHubToken(e.target.value)} />
+						<SettingsTextInput placeholder={githubToken} onChange={(e: any) => setGithubToken(e.target.value)} />
 					</SettingsInputRow>
 				</SettingsContainer>
 			</SettingsPopup>
@@ -79,6 +94,8 @@ const SettingsPopup = styled.div`
 
 	display: flex;
 	padding: 50px;
+	justify-content: center;
+	align-items: center;
 `;
 
 const SettingsContainer = styled.div`
@@ -89,11 +106,8 @@ const SettingsContainer = styled.div`
 	padding: 50px;
 	background-color: #010409;
 	
-	max-width: calc(100vw - 100px);
-	max-height: calc(100vh - 100px);
-
-	min-width: calc(50vw - 100px);
-	min-height: calc(50vh - 100px);
+	width: calc(50vw - 100px);
+	height: calc(50vh - 100px);
 `;
 
 const SettingsHeader = styled.div`
@@ -115,7 +129,16 @@ const SettingsInputLabel = styled.span`
 	top: 50%;
 `;
 
-const SettingsTextInput = styled.input.attrs(props => { type: 'text' })`
+const SettingsTextInput = styled.input.attrs( props => ({ type: 'text' }) )`
+	background-color: #1b1b1b;
+	border: 1px solid rgba(200, 200, 200, 0.3);
+	padding: 5px;
+	margin: 5px;
+	border-radius: 2.5px;
+	color: white;
+`;
+
+const SettingsCheckboxInput = styled.input.attrs( props => ({ type: 'checkbox' }) )`
 	background-color: #1b1b1b;
 	border: 1px solid rgba(200, 200, 200, 0.3);
 	padding: 5px;

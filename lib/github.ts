@@ -1,11 +1,12 @@
-import useSWR from 'swr';
+import useSWR, { SWRResponse } from 'swr';
 
-//@ts-ignore
-import cookieCutter from 'cookie-cutter';
+import { getCookie } from 'cookies-next';
+
+import { GitHubIssue } from '../types';
 
 function getGitHubToken(): string | undefined {
 	if (typeof window == 'undefined') return;
-	return cookieCutter.get('githubToken');
+	return getCookie('githubToken') as string || '';
 }
 
 const fetchWithGitHubToken = (url: string) => 
@@ -17,7 +18,7 @@ const fetchWithGitHubToken = (url: string) =>
 	}).then(res => res.json());
 
 export function useGitHubIssues() {
-	const { data, error } = useSWR(
+	const { data, error }: SWRResponse<GitHubIssue[], Error> = useSWR(
 		'https://api.github.com/issues',
 		fetchWithGitHubToken
 	)
