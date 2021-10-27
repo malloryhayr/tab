@@ -76,8 +76,6 @@ export default function Tab() {
 	}, []);
 
 	const { token: githubToken } = useGitHubToken();
-
-	console.log(githubToken);
 	
 	return (
 		<>

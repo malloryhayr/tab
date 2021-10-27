@@ -34,7 +34,7 @@ export default function Settings() {
 						<SettingsInputLabel>Personal Access Token</SettingsInputLabel>
 						<SettingsTextInput placeholder={githubToken} onChange={(e: any) => setGithubToken(e.target.value)} />
 					</SettingsInputRow>
-					<SettingsInputLabel style={{opacity: 0.3}}>{'Requires \'repo\' scope'}</SettingsInputLabel>
+					<SettingsInputLabel style={{opacity: 0.3}}>{'Requires \'repo\' & \'read:user\' scope'}</SettingsInputLabel>
 				</SettingsContainer>
 			</SettingsPopup>
 			<SettingsRow>

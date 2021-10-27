@@ -1,13 +1,16 @@
-import { useGitHubIssues } from '../lib';
+import { useGitHubIssues, useGitHubPullRequest } from '../lib';
 import { GitHubIssue } from '../types';
 
-import { IssueOpenedIcon, GitPullRequestIcon, RepoIcon } from '@primer/octicons-react'
+import { ArrowLeftIcon, GitBranchIcon, GitPullRequestIcon, IssueOpenedIcon, RepoIcon } from '@primer/octicons-react'
+import { Avatar, AvatarStack } from '@primer/components';
 
 import styled from 'styled-components';
 
 function GitHubIssueCard({ issue }: {
 	issue: GitHubIssue;
 }) {
+	const { data: pullRequest } = useGitHubPullRequest(issue.repository?.owner.login, issue.repository?.name, issue.number);
+
 	return (
 		<a href={issue.html_url} target={'_blank'} rel={'noreferrer'}>
 			<GitHubIssueCardContainer>
@@ -23,7 +26,22 @@ function GitHubIssueCard({ issue }: {
 					{issue.body}
 				</GitHubIssueCardBody>
 				<GitHubIssueCardFooter>
-					<span><RepoIcon /> {issue.repository?.owner.login}/{issue.repository?.name} #{issue.number}</span>
+					<GitHubIssueCardRepoLabel>
+						<RepoIcon /> {issue.repository?.owner.login}/{issue.repository?.name} #{issue.number}
+						{ issue.pull_request ? (
+							<>
+								&nbsp;
+								<ArrowLeftIcon />
+								&nbsp;
+								{ pullRequest?.head.label }
+							</>
+						) : <></>}
+					</GitHubIssueCardRepoLabel>
+					{ issue.assignees ? (
+						<AvatarStack alignRight>
+							{ issue.assignees.map(x => <Avatar key={x.id} alt={x.login} src={x.avatar_url} />) }
+						</AvatarStack>
+					) : <></>}
 				</GitHubIssueCardFooter>
 			</GitHubIssueCardContainer>
 		</a>
@@ -32,8 +50,6 @@ function GitHubIssueCard({ issue }: {
 
 export default function GitHub() {
 	const { data } = useGitHubIssues();
-
-	console.log(data);
 
 	if (data) return (
 		<GitHubIssueContainer>
@@ -57,7 +73,8 @@ const GitHubIssueCardContainer = styled.div`
 	border: 0.75px solid rgba(200, 200, 200, 0.3);
 	border-radius: 5px;
 	max-width: 500px;
-	height: 12.5vh;
+	min-width: 250px;
+	min-height: 12.5vh;
 	overflow-y: hidden;
 
 	position: relative;
@@ -95,8 +112,9 @@ const GitHubIssueCardBody = styled.p`
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 5px;
+	margin-bottom: 10px;
 	opacity: 0.7;
-	height: 160px;
+	max-height: 60px;
 	position: relative;
 	overflow: hidden;
 	
@@ -104,14 +122,29 @@ const GitHubIssueCardBody = styled.p`
 		content: '';
 		text-align: right;
 		position: absolute;
-		bottom: 0;
+		top: 40px;
 		right: 0;
 		width: 50%;
 		height: 20px;
 		background: linear-gradient(to right, rgba(255, 255, 255, 0), #010409 50%);
+		z-index: 1;
 	}
 `;
 
 const GitHubIssueCardFooter = styled.div`
-	opacity: 0.3;
+	color: #4E5053;
+
+	z-index: 5;
+`;
+
+const GitHubIssueCardRepoLabel = styled.span`
+	position: absolute;
+	left: 12.5px;
+	bottom: 12.5px;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	max-width: 75%;
 `;

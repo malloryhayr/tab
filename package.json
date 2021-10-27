@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@octokit/openapi-types": "^11.2.0",
+    "@primer/components": "^31.0.1",
     "@primer/octicons-react": "^16.1.1",
     "cookies-next": "^2.0.3",
     "feather-icons-react": "^0.5.0",
