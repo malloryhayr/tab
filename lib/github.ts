@@ -2,10 +2,10 @@ import useSWR, { SWRResponse } from 'swr';
 
 import { getCookie } from 'cookies-next';
 
-import { GitHubBasicError, GitHubIssue } from '../types';
+import { GitHubIssue } from '../types';
 
 function getGitHubToken(): string | undefined {
-	if (typeof window == 'undefined') return;
+	if (typeof window == 'undefined') return undefined;
 	return getCookie('githubToken') as string || '';
 }
 
@@ -34,5 +34,11 @@ export function useGitHubIssues() {
 			data: undefined,
 			error
 		}
+	}
+}
+
+export function useGitHubToken() {
+	return {
+		token: getGitHubToken()
 	}
 }

@@ -3,12 +3,12 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useState, useEffect } from 'react';
 
 import { getCookie, setCookies } from 'cookies-next';
-import styled from 'styled-components';
-
 import { Discord, DiscordTextStyle } from 'presence-kit';
+import styled from 'styled-components';
 
 import Settings from '../components/Settings';
 import GitHub from '../components/GitHub';
+import { useGitHubToken } from '../lib';
 
 const DAYS = [
 	'Sunday',
@@ -38,17 +38,7 @@ function getDiscordID(): string | undefined {
 	return localStorage.getItem('igalaxy_newtab_discord_id') as string;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	const githubToken = getCookie('githubToken', context) as string || '';
-
-	return {
-		props: {
-			githubToken
-		}
-	}
-}
-
-export default function Tab({ githubToken }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Tab() {
 	const [greeting, setGreeting] = useState(
 		new Date().getHours() >= 12 && new Date().getHours() < 18
 			? 'Good afternoon'
@@ -84,6 +74,10 @@ export default function Tab({ githubToken }: InferGetServerSidePropsType<typeof 
 			clearInterval(int);
 		};
 	}, []);
+
+	const { token: githubToken } = useGitHubToken();
+
+	console.log(githubToken);
 	
 	return (
 		<>
@@ -93,9 +87,9 @@ export default function Tab({ githubToken }: InferGetServerSidePropsType<typeof 
 			</Head>
 
 			<TabBackground>
-				<Settings githubToken={githubToken} />
+				<Settings />
 				<TabContainer>
-					{githubToken.includes('ghp') ? (<GitHub />) : (<div></div>)}
+					{githubToken ? <GitHub /> : <div />}
 					<BottomContainer>
 						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
 						<GreetingContainer>

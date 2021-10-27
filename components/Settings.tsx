@@ -1,19 +1,19 @@
 // @ts-ignore
 import FeatherIcon from 'feather-icons-react';
 import { setCookies } from 'cookies-next';
-
-import { useState } from 'react';
-
 import styled from 'styled-components';
 
-export default function Settings({ githubToken }: {
-	githubToken: string;
-}) {
+import { useState } from 'react';
+import { useGitHubToken } from '../lib';
+
+export default function Settings() {
 	const [settingsOpen, setSettingsOpen] = useState(false);
 
 	function setGithubToken(token: string) {
 		setCookies('githubToken', token, {maxAge: 2592e3, secure: true, sameSite: 'strict'});
 	}
+
+	const { token: githubToken } = useGitHubToken();
 
 	return (
 		<>

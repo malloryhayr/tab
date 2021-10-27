@@ -12,28 +12,11 @@ function GitHubIssueCard({ issue }: {
 		<a href={issue.html_url} target={'_blank'} rel={'noreferrer'}>
 			<GitHubIssueCardContainer>
 				<GitHubIssueCardTitle>
-					<IssueOpenedIcon verticalAlign={'middle'} fill={'rgb(63, 185, 80)'} size={24} />
-					<h3>{issue.title}</h3>
-				</GitHubIssueCardTitle>
-				<GitHubIssueCardBody>
-					{issue.body}
-				</GitHubIssueCardBody>
-				<GitHubIssueCardFooter>
-					<span><RepoIcon /> {issue.repository?.owner.login}/{issue.repository?.name} #{issue.number}</span>
-				</GitHubIssueCardFooter>
-			</GitHubIssueCardContainer>
-		</a>
-	)
-}
-
-function GitHubPullRequestCard({ issue }: {
-	issue: GitHubIssue;
-}) {
-	return (
-		<a href={issue.html_url} target={'_blank'} rel={'noreferrer'}>
-			<GitHubIssueCardContainer>
-				<GitHubIssueCardTitle>
-					<GitPullRequestIcon verticalAlign={'middle'} fill={'rgb(63, 185, 80)'} size={24} />
+					{
+						issue.pull_request 
+						? <GitPullRequestIcon verticalAlign={'middle'} fill={'rgb(63, 185, 80)'} size={24} />
+						: <IssueOpenedIcon verticalAlign={'middle'} fill={'rgb(63, 185, 80)'} size={24} />
+					}
 					<h3>{issue.title}</h3>
 				</GitHubIssueCardTitle>
 				<GitHubIssueCardBody>
@@ -50,10 +33,11 @@ function GitHubPullRequestCard({ issue }: {
 export default function GitHub() {
 	const { data } = useGitHubIssues();
 
+	console.log(data);
+
 	if (data) return (
 		<GitHubIssueContainer>
-			{data?.filter(x => x.pull_request).map(x => <GitHubPullRequestCard key={x.id} issue={x} />)}
-			{data?.filter(x => !x.pull_request).map(x => <GitHubIssueCard key={x.id} issue={x} />)}
+			{data?.map(x => <GitHubIssueCard key={x.id} issue={x} />)}
 		</GitHubIssueContainer>
 	) 
 	else return <div></div>;
