@@ -60,6 +60,10 @@ const SettingsRow = styled.div`
 	flex-direction: row;
 	justify-content: flex-end;
 	height: 5vh;
+
+	position: absolute;
+	right: 25px;
+	top: 25px;
 `;
 
 const SettingsPopup = styled.div`

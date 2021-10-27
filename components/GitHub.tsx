@@ -1,10 +1,11 @@
 import { useGitHubIssues, useGitHubPullRequest } from '../lib';
 import { GitHubIssue } from '../types';
 
-import { ArrowLeftIcon, GitBranchIcon, GitPullRequestIcon, IssueOpenedIcon, RepoIcon } from '@primer/octicons-react'
+import { ArrowLeftIcon, GitPullRequestIcon, IssueOpenedIcon, RepoIcon } from '@primer/octicons-react'
 import { Avatar, AvatarStack } from '@primer/components';
 
 import styled from 'styled-components';
+import SimpleMarkdown from './SimpleMarkdown';
 
 function GitHubIssueCard({ issue }: {
 	issue: GitHubIssue;
@@ -23,7 +24,9 @@ function GitHubIssueCard({ issue }: {
 					<h3>{issue.title}</h3>
 				</GitHubIssueCardTitle>
 				<GitHubIssueCardBody>
-					{issue.body}
+					<SimpleMarkdown>
+						{issue.body}
+					</SimpleMarkdown>
 				</GitHubIssueCardBody>
 				<GitHubIssueCardFooter>
 					<GitHubIssueCardRepoLabel>
@@ -65,7 +68,7 @@ const GitHubIssueBackground = styled.div`
 	position: absolute;
 	margin: 50px;
 	height: calc(100vh - 400px);
-	overflow: hidden;
+	overflow-y: scroll;
 `
 
 const GitHubIssueContainer = styled.div`
