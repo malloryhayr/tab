@@ -19,7 +19,7 @@ const fetchWithGitHubToken = (url: string) =>
 
 export function useGitHubIssues() {
 	let { data, error }: SWRResponse<GitHubIssue[], Error> = useSWR(
-		`https://api.github.com/issues?filter=assigned`,
+		`https://api.github.com/issues?filter=assigned&sort=updated&state=open`,
 		fetchWithGitHubToken
 	)
 

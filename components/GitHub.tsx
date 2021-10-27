@@ -38,7 +38,7 @@ function GitHubIssueCard({ issue }: {
 						) : <></>}
 					</GitHubIssueCardRepoLabel>
 					{ issue.assignees ? (
-						<AvatarStack alignRight>
+						<AvatarStack alignRight sx={{color: '#010409'}}>
 							{ issue.assignees.map(x => <Avatar key={x.id} alt={x.login} src={x.avatar_url} />) }
 						</AvatarStack>
 					) : <></>}
@@ -52,19 +52,27 @@ export default function GitHub() {
 	const { data } = useGitHubIssues();
 
 	if (data) return (
-		<GitHubIssueContainer>
-			{data?.map(x => <GitHubIssueCard key={x.id} issue={x} />)}
-		</GitHubIssueContainer>
+		<GitHubIssueBackground>
+			<GitHubIssueContainer>
+				{data?.map(x => <GitHubIssueCard key={x.id} issue={x} />)}
+			</GitHubIssueContainer>
+		</GitHubIssueBackground>
 	) 
 	else return <div></div>;
 }
+
+const GitHubIssueBackground = styled.div`
+	position: absolute;
+	margin: 50px;
+	height: calc(100vh - 400px);
+	overflow: hidden;
+`
 
 const GitHubIssueContainer = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
 	flex-wrap: wrap;
-	overflow-y: hidden;
 `;
 
 const GitHubIssueCardContainer = styled.div`
@@ -134,7 +142,13 @@ const GitHubIssueCardBody = styled.p`
 const GitHubIssueCardFooter = styled.div`
 	color: #4E5053;
 
+	transition: color 0.3s;
+
 	z-index: 5;
+
+	&:hover {
+		color: #B3B4B5;
+	}
 `;
 
 const GitHubIssueCardRepoLabel = styled.span`

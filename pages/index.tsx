@@ -84,10 +84,11 @@ export default function Tab() {
 				<link rel='icon' href='/none.ico'/>
 			</Head>
 
+			{githubToken ? <GitHub /> : <div />}
 			<TabBackground>
 				<Settings />
 				<TabContainer>
-					{githubToken ? <GitHub /> : <div />}
+					<div />
 					<BottomContainer>
 						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
 						<GreetingContainer>
