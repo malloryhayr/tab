@@ -146,9 +146,9 @@ const GitHubIssueCardFooter = styled.div`
 
 	z-index: 5;
 
-	&:hover {
+	/* &:hover {
 		color: #B3B4B5;
-	}
+	} */
 `;
 
 const GitHubIssueCardRepoLabel = styled.span`
