@@ -11,21 +11,6 @@ export default function Settings({ githubToken }: {
 }) {
 	const [settingsOpen, setSettingsOpen] = useState(false);
 
-	function getGithubDashboard(): boolean {
-		if (typeof window == 'undefined') return false;
-
-		let state = localStorage.getItem('igalaxy_newtab_gh_dashboard') as unknown as boolean || false;
-		if (!state)
-			state = false;
-			setGithubDashboard(false);
-		return state;
-	}
-
-	function setGithubDashboard(state: boolean) {
-		if (typeof window == 'undefined') return;
-		localStorage.setItem('igalaxy_newtab_gh_dashboard', `${state}`);
-	}
-
 	function setGithubToken(token: string) {
 		setCookies('githubToken', token, {maxAge: 2592e3, secure: true, sameSite: 'strict'});
 	}
@@ -46,13 +31,10 @@ export default function Settings({ githubToken }: {
 					</SettingsHeader>
 					<h3>GitHub</h3>
 					<SettingsInputRow>
-						<SettingsInputLabel>Enable GitHub Dashboard</SettingsInputLabel>
-						<SettingsCheckboxInput onChange={e => setGithubDashboard(e.target.checked)} />
-					</SettingsInputRow>
-					<SettingsInputRow>
 						<SettingsInputLabel>Personal Access Token</SettingsInputLabel>
 						<SettingsTextInput placeholder={githubToken} onChange={(e: any) => setGithubToken(e.target.value)} />
 					</SettingsInputRow>
+					<SettingsInputLabel style={{opacity: 0.3}}>{'Requires \'repo\' scope'}</SettingsInputLabel>
 				</SettingsContainer>
 			</SettingsPopup>
 			<SettingsRow>

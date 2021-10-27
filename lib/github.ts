@@ -2,7 +2,7 @@ import useSWR, { SWRResponse } from 'swr';
 
 import { getCookie } from 'cookies-next';
 
-import { GitHubIssue } from '../types';
+import { GitHubBasicError, GitHubIssue } from '../types';
 
 function getGitHubToken(): string | undefined {
 	if (typeof window == 'undefined') return;
@@ -23,8 +23,16 @@ export function useGitHubIssues() {
 		fetchWithGitHubToken
 	)
 
-	return {
-		data,
-		error,
+	// @ts-ignore
+	if (data && !data.message) {
+		return {
+			data,
+			error,
+		}
+	} else {
+		return {
+			data: undefined,
+			error
+		}
 	}
 }

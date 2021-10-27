@@ -95,7 +95,7 @@ export default function Tab({ githubToken }: InferGetServerSidePropsType<typeof 
 			<TabBackground>
 				<Settings githubToken={githubToken} />
 				<TabContainer>
-					<GitHub />
+					{githubToken.includes('ghp') ? (<GitHub />) : (<div></div>)}
 					<BottomContainer>
 						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
 						<GreetingContainer>
