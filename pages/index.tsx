@@ -125,7 +125,7 @@ const TabContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 
-	height: calc(90vh - 100px);
+	height: calc(95vh - 100px);
 `;
 
 const BottomContainer = styled.div`

@@ -77,7 +77,7 @@ const SettingsRow = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
-	height: 10vh;
+	height: 5vh;
 `;
 
 const SettingsPopup = styled.div`
