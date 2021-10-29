@@ -10,7 +10,7 @@ import SimpleMarkdown from './SimpleMarkdown';
 function GitHubIssueCard({ issue }: {
 	issue: GitHubIssue;
 }) {
-	const { data: pullRequest } = useGitHubPullRequest(issue.repository?.owner.login, issue.repository?.name, issue.number);
+	const { data: pullRequest } = useGitHubPullRequest(issue.repository?.owner.login, issue.repository?.name, issue.number, issue.pull_request);
 
 	return (
 		<a href={issue.html_url} target={'_blank'} rel={'noreferrer'}>

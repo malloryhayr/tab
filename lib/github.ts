@@ -37,9 +37,9 @@ export function useGitHubIssues() {
 	}
 }
 
-export function useGitHubPullRequest(owner: string | undefined, repo: string | undefined, id: number | undefined) {
+export function useGitHubPullRequest(owner: string | undefined, repo: string | undefined, id: number | undefined, pr: any) {
 	const { data, error }: SWRResponse<GitHubPullRequest, Error> = useSWR(
-		`https://api.github.com/repos/${owner}/${repo}/pulls/${id}`,
+		pr ? `https://api.github.com/repos/${owner}/${repo}/pulls/${id}` : ``,
 		fetchWithGitHubToken
 	)
 
