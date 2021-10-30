@@ -90,7 +90,9 @@ export default function Tab() {
 				<TabContainer>
 					<div />
 					<BottomContainer>
-						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} largeAssetOverrides={{
+							'Satisfactory': 'https://cdn.discordapp.com/app-icons/572456126872944651/6c79b34ca44fc2bf906925038d03a2b5.webp?size=60'
+						}} />
 						<GreetingContainer>
 							<GreetingPrimary>
 								{greeting}, {getName()}.
