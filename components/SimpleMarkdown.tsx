@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react';
 
 export default function SimpleMarkdown(props: PropsWithChildren<any>) {
-	return props.children
+	if(props.children) return props.children
 		.replaceAll('<!--', '')
-		.replaceAll('-->', '');
+		.replaceAll('-->', '')
+	else return <></>;
 }
