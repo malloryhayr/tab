@@ -131,6 +131,7 @@ const GreetingContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	user-select: none;
 `;
 
 const GreetingPrimary = styled.h1`
