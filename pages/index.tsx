@@ -1,8 +1,6 @@
 import Head from 'next/head';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useState, useEffect } from 'react';
 
-import { getCookie, setCookies } from 'cookies-next';
 import { Discord, DiscordTextStyle } from 'presence-kit';
 import styled from 'styled-components';
 
