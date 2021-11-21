@@ -2543,10 +2543,10 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-presence-kit@^0.2.13:
-  version "0.2.13"
-  resolved "https://registry.yarnpkg.com/presence-kit/-/presence-kit-0.2.13.tgz#6c76d1e12bed1411227d1e258026387244482386"
-  integrity sha512-x9d54qdIx/hp14HVuJXT2CFx0qMDQfqISZ5yz2H3xKXhU0/qu1QjshUMtI9T9W8NeP2dD/6Z0bqyjJl4sxWeKw==
+presence-kit@^0.2.15:
+  version "0.2.15"
+  resolved "https://registry.yarnpkg.com/presence-kit/-/presence-kit-0.2.15.tgz#414b3fa4686ed25263e810505731a9ed6f20d29d"
+  integrity sha512-5rC11I6+64iBJQ3gWz3cGuFhIrKEHAb43FVKJWfm5PliZL7IiNfPr2I/kaQtWUEW06oWEjJmPHWD2uVKusnKVg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.36"
     "@fortawesome/free-solid-svg-icons" "^5.15.4"
