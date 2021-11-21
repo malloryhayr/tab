@@ -9,12 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@octokit/openapi-types": "^11.2.0",
+    "@primer/components": "^31.0.1",
+    "@primer/octicons-react": "^16.1.1",
+    "cookies-next": "^2.0.3",
+    "feather-icons-react": "^0.5.0",
     "next": "^12.0.3",
     "presence-kit": "^0.2.15",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sass": "^1.43.3",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@types/react": "17.0.32",

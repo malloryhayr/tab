@@ -4,6 +4,10 @@ import { useState, useEffect } from 'react';
 import { Discord, DiscordTextStyle } from 'presence-kit';
 import styled from 'styled-components';
 
+import Settings from '../components/Settings';
+import GitHub from '../components/GitHub';
+import { useGitHubToken } from '../lib';
+
 const DAYS = [
 	'Sunday',
 	'Monday',
@@ -68,6 +72,8 @@ export default function Tab() {
 			clearInterval(int);
 		};
 	}, []);
+
+	const { token: githubToken } = useGitHubToken();
 	
 	return (
 		<>
@@ -76,19 +82,25 @@ export default function Tab() {
 				<link rel='icon' href='/none.ico'/>
 			</Head>
 
+			{githubToken ? <GitHub /> : <div />}
 			<TabBackground>
-				<div></div>
-				<BottomContainer>
-					<Discord id={'182292736790102017'} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
-					<GreetingContainer>
-						<GreetingPrimary>
-							{greeting}, {getName()}.
-						</GreetingPrimary>
-						<GreetingSecondary>
-							{date} • {time}
-						</GreetingSecondary>
-					</GreetingContainer>
-				</BottomContainer>
+				<Settings />
+				<TabContainer>
+					<div />
+					<BottomContainer>
+						<Discord id={getDiscordID() as string} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} largeAssetOverrides={{
+							'Satisfactory': 'https://cdn.discordapp.com/app-icons/572456126872944651/6c79b34ca44fc2bf906925038d03a2b5.webp?size=60'
+						}} />
+						<GreetingContainer>
+							<GreetingPrimary>
+								{greeting}, {getName()}.
+							</GreetingPrimary>
+							<GreetingSecondary>
+								{date} • {time}
+							</GreetingSecondary>
+						</GreetingContainer>
+					</BottomContainer>
+				</TabContainer>
 			</TabBackground>
 		</>
 	)
@@ -99,10 +111,14 @@ const TabBackground = styled.div`
 	padding: 50px;
 	margin: 0;
 	height: 100vh;
+`;
 
+const TabContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+
+	height: calc(95vh - 100px);
 `;
 
 const BottomContainer = styled.div`
@@ -115,6 +131,7 @@ const GreetingContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	user-select: none;
 `;
 
 const GreetingPrimary = styled.h1`
