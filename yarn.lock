@@ -274,6 +274,21 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
+"@igalaxy/presence-kit@^0.2.18":
+  version "0.2.18"
+  resolved "https://registry.yarnpkg.com/@igalaxy/presence-kit/-/presence-kit-0.2.18.tgz#a272a323c26962b56f4a3afe73e2831797355047"
+  integrity sha512-emCMod7+ogOEMemz7yE2316HqiXA+f34hTui2lP41CwldnHbeOZF26LhmcuT0hVDYHOoGeuXWNhfUNL9RQ1cwA==
+  dependencies:
+    "@fortawesome/fontawesome-svg-core" "^1.2.36"
+    "@fortawesome/free-solid-svg-icons" "^5.15.4"
+    "@fortawesome/react-fontawesome" "^0.1.15"
+    react-content-loader "^6.0.3"
+    react-twemoji "^0.3.0"
+    styled-components "^5.3.1"
+    swr "^1.0.1"
+    typescript "^4.4.4"
+    use-lanyard "^1.0.1"
+
 "@napi-rs/triples@1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.0.3.tgz#76d6d0c3f4d16013c61e45dfca5ff1e6c31ae53c"
@@ -2582,21 +2597,6 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
-
-presence-kit@^0.2.15:
-  version "0.2.16"
-  resolved "https://registry.yarnpkg.com/presence-kit/-/presence-kit-0.2.16.tgz#f7b6c25389932914531e34ee5ef4548ca37136a7"
-  integrity sha512-u/TgGrZIejJ+PLjZ2AnTG87NY6iP3HpP7LYEfPShaOIdU5kqyLF11BgJ58m/x9ogt/BR+qYcFZy2xWj+UGaPLw==
-  dependencies:
-    "@fortawesome/fontawesome-svg-core" "^1.2.36"
-    "@fortawesome/free-solid-svg-icons" "^5.15.4"
-    "@fortawesome/react-fontawesome" "^0.1.15"
-    react-content-loader "^6.0.3"
-    react-twemoji "^0.3.0"
-    styled-components "^5.3.1"
-    swr "^1.0.1"
-    typescript "^4.4.4"
-    use-lanyard "^1.0.1"
 
 process@0.11.10:
   version "0.11.10"

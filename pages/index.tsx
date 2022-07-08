@@ -1,18 +1,10 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
-import { Discord, DiscordTextStyle } from 'presence-kit';
+import { Discord, DiscordTextStyle } from '@igalaxy/presence-kit';
 import styled from 'styled-components';
 
-const DAYS = [
-	'Sunday',
-	'Monday',
-	'Tuesday',
-	'Wednesday',
-	'Thursday',
-	'Friday',
-	'Saturday'
-];
+const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 function getName(): string | undefined {
 	if (typeof window == 'undefined') return;
@@ -56,30 +48,34 @@ export default function Tab() {
 			);
 			setGreeting(
 				currentDate.getHours() >= 12 && new Date().getHours() < 18
-				? 'Good afternoon'
-				: new Date().getHours() < 12
-				? 'Good morning'
-				: 'Good evening'
+					? 'Good afternoon'
+					: new Date().getHours() < 12
+					? 'Good morning'
+					: 'Good evening'
 			);
-
 		}, 1000);
 
 		return () => {
 			clearInterval(int);
 		};
 	}, []);
-	
+
 	return (
 		<>
 			<Head>
 				<title>New Tab</title>
-				<link rel='icon' href='/none.ico'/>
+				<link rel="icon" href="/none.ico" />
 			</Head>
 
 			<TabBackground>
 				<div></div>
 				<BottomContainer>
-					<Discord id={'182292736790102017'} bgStyle={'#010409'} textStyle={DiscordTextStyle.LIGHT} border={false} />
+					<Discord
+						id={'182292736790102017'}
+						bgStyle={'#010409'}
+						textStyle={DiscordTextStyle.LIGHT}
+						border={false}
+					/>
 					<GreetingContainer>
 						<GreetingPrimary>
 							{greeting}, {getName()}.
@@ -91,7 +87,7 @@ export default function Tab() {
 				</BottomContainer>
 			</TabBackground>
 		</>
-	)
+	);
 }
 
 const TabBackground = styled.div`
@@ -122,7 +118,8 @@ const GreetingPrimary = styled.h1`
 	font-size: 3.5rem;
 	line-height: 1.15;
 	text-align: right;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `;
 
 const GreetingSecondary = styled.h2`
@@ -130,5 +127,6 @@ const GreetingSecondary = styled.h2`
 	font-size: 2rem;
 	line-height: 1.5;
 	text-align: right;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 `;
