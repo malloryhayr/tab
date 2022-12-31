@@ -10,8 +10,7 @@ function getName(): string | undefined {
 	if (typeof window == 'undefined') return;
 	if (new URLSearchParams(window.location.search).get('name'))
 		return new URLSearchParams(window.location.search).get('name') as string;
-	if (!localStorage.getItem('igalaxy_newtab_name'))
-		localStorage.setItem('igalaxy_newtab_name', 'William');
+	if (!localStorage.getItem('igalaxy_newtab_name')) localStorage.setItem('igalaxy_newtab_name', '');
 	return localStorage.getItem('igalaxy_newtab_name') as string;
 }
 
@@ -78,7 +77,8 @@ export default function Tab() {
 					/>
 					<GreetingContainer>
 						<GreetingPrimary>
-							{greeting}, {getName()}.
+							{greeting}
+							{getName() != '' ? `, ${getName()}` : ''}.
 						</GreetingPrimary>
 						<GreetingSecondary>
 							{date} • {time}
