@@ -1,8 +1,10 @@
+'use client';
+
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
 import { Discord, DiscordTextStyle } from '@igalaxy/presence-kit';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
