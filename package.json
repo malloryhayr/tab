@@ -1,27 +1,27 @@
 {
-	"name": "tab",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@igalaxy/presence-kit": "^0.4.15",
-		"next": "^13.4.4",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"sass": "^1.62.1",
-		"styled-components": "^6.0.0-rc.3"
-	},
-	"devDependencies": {
-		"@types/node": "20.2.5",
-		"@types/react": "^18.2.8",
-		"@types/styled-components": "^5.1.26",
-		"eslint": "8.1.0",
-		"eslint-config-next": "11.1.2",
-		"typescript": "^5.1.3"
-	}
+  "name": "tab",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@igalaxy/presence-kit": "^0.3.1",
+    "next": "^12.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.43.3",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.32",
+    "@types/styled-components": "^5.1.15",
+    "babel-plugin-styled-components": "^1.13.3",
+    "eslint": "8.1.0",
+    "eslint-config-next": "11.1.2",
+    "typescript": "4.4.4"
+  }
 }
