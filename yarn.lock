@@ -281,10 +281,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@igalaxy/presence-kit@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@igalaxy/presence-kit/-/presence-kit-0.3.1.tgz#be0671970611d4400c4ef72084451d986c7c717c"
-  integrity sha512-xiOMOl6w7gHE1cYLrO52Ol+eprjD+Zx88c3CjsitW4KbAVX17FvlU35grtpNPY2F2SLSThuQSiF+L5/51fFNjQ==
+"@igalaxy/presence-kit@^0.4.16":
+  version "0.4.16"
+  resolved "https://registry.yarnpkg.com/@igalaxy/presence-kit/-/presence-kit-0.4.16.tgz#14ff60353aa82f059d5605545f98f53a7e5030c9"
+  integrity sha512-FrBin8MiXpchRyWOuXB1rTuGi/qJF/nwBkGCgL+GDA5XCZB/LkRGmmvNBKwtJsTijcMRxEL2R5qBsH3KFumejg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.2.1"
     "@fortawesome/free-solid-svg-icons" "^6.2.1"
