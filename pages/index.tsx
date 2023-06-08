@@ -74,6 +74,7 @@ export default function Tab() {
 						bgStyle={'#010409'}
 						textStyle={DiscordTextStyle.LIGHT}
 						border={false}
+						username={false}
 					/>
 					<GreetingContainer>
 						<GreetingPrimary>
