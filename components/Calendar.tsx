@@ -15,7 +15,7 @@ export default function Calendar() {
 		fetch(url).then(res => res.json())
 	);
 
-	if (status === 'loading') return <h1>loading... please wait</h1>;
+	if (status === 'loading') return <></>;
 	if (status === 'authenticated' && data && data.user) {
 		const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 		const YEAR = dayjs().format('YYYY');
