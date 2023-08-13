@@ -10,10 +10,31 @@ dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
 export default function Calendar() {
+	const fetcher = async (url: string) => {
+		const res = await fetch(url);
+
+		// If the status code is not in the range 200-299,
+		// we still try to parse and throw it.
+		if (!res.ok) {
+			const error = new Error('An error occurred while fetching the data.') as any;
+			// Attach extra info to the error object.
+			error.info = await res.json();
+			error.status = res.status;
+			throw error;
+		}
+
+		return res.json();
+	};
+
 	const { data, status } = useSession();
-	const { data: calendar } = useSWR<calendar_v3.Schema$Event[]>('/api/calendar', url =>
-		fetch(url).then(res => res.json())
-	);
+	const { data: calendar, error } = useSWR<{
+		events: (calendar_v3.Schema$Event & { color: string })[];
+		colors: {
+			[key: string]: calendar_v3.Schema$ColorDefinition;
+		};
+	}>('/api/calendar', fetcher);
+
+	if (error != undefined && status == 'authenticated') signOut();
 
 	if (status === 'loading') return <></>;
 	if (status === 'authenticated' && data && data.user) {
@@ -84,7 +105,7 @@ export default function Calendar() {
 
 		const days: RawDay[] = [...previousMonthDays, ...currentMonthDays, ...nextMonthDays];
 
-		const CalendarEvent = ({ event }: { event: calendar_v3.Schema$Event }) => {
+		const CalendarEvent = ({ event }: { event: calendar_v3.Schema$Event & { color: string } }) => {
 			return (
 				<a href={event.htmlLink || '/'} target={event.htmlLink ? '_blank' : ''}>
 					<div
@@ -95,17 +116,25 @@ export default function Calendar() {
 							justifyContent: 'flex-start',
 							lineHeight: '12px',
 							marginBottom: '2px',
+							backgroundColor:
+								event.color +
+								Math.round(0.2 * 255)
+									.toString(16)
+									.toUpperCase(),
+							borderRadius: '7px',
 						}}
 						title={event.summary || ''}
+						className={'calendarEvent'}
 					>
-						{/* <div
+						<div
 							style={{
 								height: '14px',
 								width: '14px',
 								borderRadius: '100%',
 								marginRight: '0.25em',
+								backgroundColor: event.color,
 							}}
-						/> */}
+						/>
 						<span
 							style={{
 								maxWidth: '90px',
@@ -130,14 +159,15 @@ export default function Calendar() {
 			week: number;
 			weekday: number;
 		}) => {
-			let events: calendar_v3.Schema$Event[] = [];
-			if (calendar) {
-				calendar.forEach(event => {
+			let events: (calendar_v3.Schema$Event & { color: string })[] = [];
+			if (calendar && calendar.events) {
+				calendar.events.forEach(event => {
 					if (
 						(event.start?.date && dayjs(event.start.date).isSame(raw.date, 'day')) ||
 						(event.start?.dateTime && dayjs(event.start.dateTime).isSame(raw.date, 'day'))
 					) {
 						events.push(event);
+						event.colorId;
 					}
 				});
 			}
