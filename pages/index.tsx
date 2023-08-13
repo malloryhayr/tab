@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 import { Discord, DiscordTextStyle } from '@igalaxy/presence-kit';
 import styled from 'styled-components';
+import Calendar from '../components/Calendar';
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -67,7 +68,9 @@ export default function Tab() {
 			</Head>
 
 			<TabBackground>
-				<div></div>
+				<TopContainer>
+					<Calendar />
+				</TopContainer>
 				<BottomContainer>
 					<Discord
 						id={'182292736790102017'}
@@ -96,16 +99,29 @@ const TabBackground = styled.div`
 	padding: 50px;
 	margin: 0;
 	height: 100vh;
+	overflow: hidden;
+	flex-direction: column;
 
 	display: flex;
-	flex-direction: column;
 	justify-content: space-between;
+`;
+
+const TopContainer = styled.div`
+	display: flex;
+	padding: 16px;
+	flex-direction: column;
+	max-width: fit-content;
 `;
 
 const BottomContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	width: 100%;
+	max-height: 350px;
+	overflow-y: hidden;
+	bottom: 0;
+	user-select: none;
 `;
 
 const GreetingContainer = styled.div`
