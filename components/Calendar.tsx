@@ -16,7 +16,7 @@ export default function Calendar() {
 	);
 
 	if (status === 'loading') return <h1>loading... please wait</h1>;
-	if (status === 'authenticated' && data.user) {
+	if (status === 'authenticated' && data && data.user) {
 		const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 		const YEAR = dayjs().format('YYYY');
 		const MONTH = dayjs().format('M');
