@@ -6,6 +6,7 @@ const title = 'New Tab';
 const description = "mallory's new tab page";
 
 export const metadata: Metadata = {
+	metadataBase: new URL('https://mallory.rs'),
 	title,
 	description,
 	viewport: { width: 'device-width', initialScale: 1 },
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 		title,
 		description,
 		type: 'website',
-		url: 'https://tab.mallory.rs',
+		url: new URL('https://tab.mallory.rs'),
 	},
 	twitter: {
 		title,
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
 	authors: [
 		{
 			name: 'Mallory Hayr',
-			url: 'https://mallory.rs',
+			url: new URL('https://mallory.rs'),
 		},
 	],
 	themeColor: '#010409',

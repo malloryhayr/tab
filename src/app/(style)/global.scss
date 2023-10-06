@@ -36,8 +36,12 @@ main {
 	padding-top: 12.5vw;
 	div {
 		display: flex;
-		gap: 0.25em;
+		gap: 0 0.25em;
 		flex-wrap: wrap;
-		width: 50vw;
+		width: 81em;
+		pre {
+			user-select: none;
+			cursor: pointer;
+		}
 	}
 }
