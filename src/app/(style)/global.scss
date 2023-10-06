@@ -1,0 +1,43 @@
+@font-face {
+	font-family: JuliaMono-Light;
+	src: url('https://cdn.jsdelivr.net/gh/cormullion/juliamono/webfonts/JuliaMono-Light.woff2');
+}
+
+@font-face {
+	font-family: JuliaMono;
+	src: url('https://cdn.jsdelivr.net/gh/cormullion/juliamono/webfonts/JuliaMono-Regular.woff2');
+}
+
+:root {
+	--color-bg: #00030a;
+	--color-primary: #acc8ff;
+	--color-secondary: #4866ab;
+}
+
+html,
+body,
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+	background: var(--color-bg);
+	color: var(--color-primary);
+	font-family: JuliaMono;
+	font-size: 16px;
+}
+
+main {
+	display: flex;
+	justify-content: center;
+	padding-top: 12.5vw;
+	div {
+		display: flex;
+		gap: 0.25em;
+		flex-wrap: wrap;
+		width: 50vw;
+	}
+}
