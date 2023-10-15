@@ -8,10 +8,14 @@
 	src: url('https://cdn.jsdelivr.net/gh/cormullion/juliamono/webfonts/JuliaMono-Regular.woff2');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
 	--color-bg: #00030a;
-	--color-primary: #acc8ff;
+	--color-primary: #fff;
 	--color-secondary: #4866ab;
+
+	--width: 900px;
 }
 
 html,
@@ -22,26 +26,88 @@ body,
 }
 
 body {
+	position: relative;
+
 	width: 100vw;
 	height: 100vh;
 	background: var(--color-bg);
 	color: var(--color-primary);
 	font-family: JuliaMono;
 	font-size: 16px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	user-select: none;
 }
 
 main {
+	width: var(--width);
+
 	display: flex;
-	justify-content: center;
-	padding-top: 12.5vw;
+	justify-content: space-between;
+	flex-direction: column;
+	gap: 1em;
+
+	opacity: 0;
+
+	transition: opacity 0.2s ease-in-out;
+
+	&:hover {
+		opacity: 1;
+	}
+
 	div {
 		display: flex;
-		gap: 0 0.25em;
-		flex-wrap: wrap;
-		width: 81em;
-		pre {
-			user-select: none;
-			cursor: pointer;
+		justify-content: space-between;
+		gap: 1em;
+		height: calc((var(--width) - 4em) / 5);
+
+		a {
+			div {
+				width: calc((var(--width) - 4em) / 5);
+				height: calc((var(--width) - 4em) / 5);
+				background-color: var(--color-secondary);
+				border-radius: 0.5em;
+
+				cursor: pointer;
+
+				transition: box-shadow 0.05s ease-in-out;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				svg {
+					width: 3em;
+					height: 3em;
+				}
+			}
 		}
+	}
+}
+
+.searchBox {
+	position: fixed;
+
+	font-family: JuliaMono;
+	padding: 0.5em;
+	padding-left: calc(0.5em + 24px + 0.5em);
+	width: 30em;
+	border-radius: 0.5em;
+	font-size: 16.72px;
+
+	border: 0.25em solid #c9c9c9;
+	background-image: url('/assets/search.svg');
+	background-repeat: no-repeat;
+	background-position: 0.5em center;
+	background-size: 24px;
+
+	z-index: 999;
+
+	&:focus {
+		outline: none;
 	}
 }
