@@ -316,6 +316,7 @@ function Box({ width, height, icon, url, searchUrl, row }: BoxProps) {
 				opacity: 0,
 				cursor: 'auto',
 				pointerEvents: 'none',
+				zIndex: -1,
 			}}
 		></div>
 	);
