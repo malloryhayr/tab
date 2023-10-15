@@ -239,6 +239,7 @@ function Box({ width, height, icon, url, searchUrl, row }: BoxProps) {
 						setHovered(true);
 					}}
 					onMouseLeave={() => {
+						setSearching(false);
 						setHovered(false);
 					}}
 					// @ts-ignore
@@ -284,7 +285,7 @@ function Box({ width, height, icon, url, searchUrl, row }: BoxProps) {
 						style={{
 							display: searching ? 'block' : 'none',
 							top: `calc(${coords.y}px - 0.5em - 16px)`,
-							left: coords.x,
+							left: `calc(${coords.x}px + 0.5em)`,
 							border: `0.25em solid #c9c9c9`,
 							backgroundImage: "url('/assets/search.svg')",
 							backgroundRepeat: 'no-repeat',

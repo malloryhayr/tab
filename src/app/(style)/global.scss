@@ -51,12 +51,12 @@ main {
 	flex-direction: column;
 	gap: 1em;
 
-	opacity: 0;
+	filter: saturate(25%);
 
-	transition: opacity 0.2s ease-in-out;
+	transition: filter 0.2s ease-in-out;
 
 	&:hover {
-		opacity: 1;
+		filter: none;
 	}
 
 	div {
