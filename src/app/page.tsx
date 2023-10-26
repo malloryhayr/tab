@@ -12,8 +12,16 @@ import {
 	siLemmy,
 	siPlex,
 	siGoogledrive,
+	siAdventofcode,
 	SimpleIcon,
 } from 'simple-icons';
+
+const cuAdventofcode: CustomIcon = {
+	title: siAdventofcode.title,
+	hex: '0F0F23',
+	innerHex: siAdventofcode.hex,
+	path: siAdventofcode.path,
+};
 
 const cuMinecraft: CustomIcon = {
 	title: 'Minecraft Wiki',
@@ -114,7 +122,7 @@ export default function Home() {
 					<Box row={3} />
 				</div>
 				<div>
-					<Box row={2} />
+					<Box icon={cuAdventofcode} url="https://adventofcode.com/" row={1} />
 					<Box row={2} />
 					<Box
 						icon={siTwitter}
@@ -138,12 +146,12 @@ export default function Home() {
 				</div>
 				<div>
 					<Box
-						width={2}
 						icon={cuLemmy}
 						url="https://lemmy.blahaj.zone/"
 						searchUrl="https://lemmy.blahaj.zone/search?q=QUERY&type=All&listingType=All&page=1&sort=TopAll"
 						row={1}
 					/>
+					<Box row={1} />
 					<Box
 						icon={siGithub}
 						url="https://github.com/"
