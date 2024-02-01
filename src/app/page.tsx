@@ -84,7 +84,7 @@ export default function Home() {
 					.replace(',', '')}
 			</h3>
 			<em style={{ marginTop: '1em', marginBottom: '1.25em' }}>{greeting}</em>
-			<main>
+			{/* <main>
 				<div>
 					<Box
 						icon={siGoogledrive}
@@ -153,7 +153,7 @@ export default function Home() {
 					<Box row={1} />
 					<Box row={1} />
 				</div>
-			</main>
+			</main> */}
 		</>
 	);
 }
